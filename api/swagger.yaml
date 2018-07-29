@@ -9,8 +9,6 @@ info:
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "virtserver.swaggerhub.com"
-basePath: "/hey-node/node/1.0.0"
 tags:
 - name: "cities"
   description: "All cities endpoints"
@@ -19,7 +17,7 @@ tags:
 - name: "users"
   description: "All users endpoints"
 schemes:
-- "https"
+- "http"
 paths:
   /users:
     get:
@@ -216,10 +214,10 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - in: "body"
+      - in: body
         name: "city"
         description: "city to add"
-        required: false
+        required: true
         schema:
           $ref: "#/definitions/City"
       responses:
@@ -271,6 +269,12 @@ paths:
         required: true
         type: "string"
         format: "uuid"
+      - in: body
+        name: "city"
+        description: "city to add"
+        required: true
+        schema:
+          $ref: "#/definitions/City"
       responses:
         200:
           description: "Successful response"
@@ -340,7 +344,6 @@ definitions:
   Product:
     type: "object"
     required:
-    - "id"
     - "name"
     - "type"
     properties:
@@ -366,7 +369,6 @@ definitions:
     type: "object"
     required:
     - "country"
-    - "id"
     - "name"
     properties:
       id:
